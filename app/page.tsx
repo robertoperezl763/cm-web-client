@@ -3,9 +3,9 @@ import Image from "next/image";
 const Home = () => {
   return (
     <main>
-      Home
+      checking
     </main>
   );
-}
+};
 
 export default Home;
