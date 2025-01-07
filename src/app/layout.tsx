@@ -1,11 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Lato } from "next/font/google";
 import "./globals.sass";
-
+import ToastProvider from "../components/toastProvider";
+import 'react-toastify/dist/ReactToastify.css';
+import {clsx} from "clsx";
 const lato = Lato({ 
   weight: ["400"],
   subsets: ["latin"]
  });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +27,15 @@ type RootLayoutProps = Readonly<{
 
 const RootLayout = (props: RootLayoutProps) => (
   <html lang="en">
-    <body className={lato.className}>{props.children}</body>
+    <body className={clsx(
+      lato.className,
+      'bg-grey2'    
+    )
+      }>
+      <ToastProvider>
+        {props.children}
+      </ToastProvider>
+    </body>
   </html>
 );
 
