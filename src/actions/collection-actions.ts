@@ -76,7 +76,7 @@ export const updateCollection = async (formData: FormData, currentCollectionID: 
     const hasImageChanged = toBool(formData.get('imageChanged')?.toString());
 
     if(imageFile instanceof File && imageFile.size > 0) {
-        console.log(imageFile?.size)
+        // console.log(imageFile?.size)
         if(!imageUID){
             imageUID = crypto.randomUUID();
         }
@@ -169,7 +169,7 @@ export const collectionDelete = async (collectionId: string) => {
     
     const response = await req.json();
 
-    console.log(response);
+    // console.log(response);
 
     
     redirect(`/collections-by/${user.id}`);

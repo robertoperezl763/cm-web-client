@@ -27,7 +27,7 @@ const ChangePassword = () => {
     useEffect(() => {
         if(messageState.isSuccess === true) {
             
-            console.log('if is working');
+            // console.log('if is working');
             toast.success('Password Changed Successfully', {
                 position: "top-right",
                 autoClose: 800,

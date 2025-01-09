@@ -22,7 +22,7 @@ const VerticalMore = (props: VerticalMoreProps) => {
 
     const onKeyDown = (event: React.KeyboardEvent) => {
         if (isOpen && event.key === 'Escape') {
-            console.log('clicked escape');
+            // console.log('clicked escape');
             setIsOpen(false);
         }
     };
@@ -38,7 +38,7 @@ const VerticalMore = (props: VerticalMoreProps) => {
             }
 
             if (dropdownRef.current && dropdownRef.current.contains(event.target as Node)) {
-                console.log('clicked inside!')
+                // console.log('clicked inside!')
             }
 
         };

@@ -19,8 +19,8 @@ export async function UploadFileToS3 (
     imageId: string,
     file: File
     ) {
-    console.log('RUNNING THE SERVER SIDE UPLOAD FUNC');
-    console.log(imageId);
+    // console.log('RUNNING THE SERVER SIDE UPLOAD FUNC');
+    // console.log(imageId);
     
     const fileBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(fileBuffer)
@@ -33,10 +33,10 @@ export async function UploadFileToS3 (
     }
 
     const command = new PutObjectCommand(params);
-    console.log('create command is success');
+    // console.log('create command is success');
     await s3.send(command);
 
-    console.log('send command is success');
+    // console.log('send command is success');
 
 };
 
@@ -51,7 +51,7 @@ export async function DeleteFileFromS3 (
     
     try {
         await s3.send(command);
-        console.log('delete command is success');
+        // console.log('delete command is success');
     } catch (error: any) {
         throw new Error(error);
     }

@@ -24,7 +24,7 @@ export const useAuth = () => {
     }
     
     const user = JSON.parse(userCookie);
-    console.log(user)
+    // console.log(user)
     return [user, token]
 };
 

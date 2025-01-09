@@ -42,7 +42,7 @@ export const fetchCollectionList = async (token:string | undefined, findPublicOn
     try {
         req = await fetch(uri, reqOptions);
     } catch (error: any) {
-        console.log('An Error Occured: ', error.message);
+        // console.log('An Error Occured: ', error.message);
         throw new Error(`An Error Occured: ${error.message}`);
     }
 
@@ -94,7 +94,7 @@ export const fetchItemsData = async(collectionID: string, userId?: number): Prom
     let collectionData = await fetchSingleCollectionData(collectionID)
 
     if (!collectionData.isPublic && collectionData.userId !== userId) {
-        console.log('##############################\nTHIS DOES NOT BELONG TO YOU\nYOU CAN NOT SEE THIS\n###################################');
+        // console.log('##############################\nTHIS DOES NOT BELONG TO YOU\nYOU CAN NOT SEE THIS\n###################################');
         redirect('/Error');
     }
 

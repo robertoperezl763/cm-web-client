@@ -19,7 +19,7 @@ const SubmissionDialog = (props: CollectionDialogProps) => {
 
     function handleSubmit(e:any) { 
         e.preventDefault(); 
-        console.log('form was submitted!'); 
+        // console.log('form was submitted!'); 
     };
 
     return (
