@@ -25,7 +25,7 @@ if (isSignedIn()) {
             <div className="flex flex-col items-center justify-center h-full">
                 <div className="flex items-center justify-self-center">
                     <img className="opacity-50 h-12 w-12 rounded-none" src={logoNoBg}></img>
-                    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold">Welcome to Collection Manager</h1>
+                    <h1 className="text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold">Welcome to Collection Manager - New User</h1>
                     <img className="opacity-50 h-12 w-12 rounded-none" src={logoNoBg}></img>
                 </div>
                 <div className="flex items-center justify-center">
