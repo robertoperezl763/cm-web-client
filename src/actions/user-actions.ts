@@ -3,13 +3,17 @@
 import { serviceUrl } from "../config";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { useAuth } from "../helpers/auth";
-import { DeleteFileFromS3, UploadFileToS3 } from "../utils/s3";
-import { resolve } from "path";
-import { arrayBuffer } from "stream/consumers";
-import { toBool } from "../helpers/helperFunctions";
+import { isSignedIn, useAuth } from "../helpers/auth";
+// import { DeleteFileFromS3, UploadFileToS3 } from "../utils/s3";
+// import { resolve } from "path";
+// import { arrayBuffer } from "stream/consumers";
+// import { toBool } from "../helpers/helperFunctions";
 
 const cookieStore = cookies();
+
+export async function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms) );
+}
 
 export const login = async (prevState: any, formData: FormData) => {
     const reqOptions = {
@@ -41,7 +45,8 @@ export const login = async (prevState: any, formData: FormData) => {
     }
 
     const response = await req.json();
-
+    console.log('LOGIN RESPONSE:')
+    console.log(response);
     if (req.status !== 200) {
         return {
             message: response.message
@@ -54,6 +59,14 @@ export const login = async (prevState: any, formData: FormData) => {
     cookieStore.set('token', response.token, { expires: expirationTimestamp });
     cookieStore.set('user', JSON.stringify(response.user), { expires: expirationTimestamp });
 
+    console.log('COOKIES SHOULD BE SAVED');
+    await delay(200);
+
+    if(isSignedIn()){
+        console.log('I AM LOGGED IN');
+    } else {
+        console.log('COOKIES ERROR????')
+    }
     // console.log(cookieStore.get('token'))
     // console.log(cookieStore.get('user'))
     
@@ -64,8 +77,12 @@ export const login = async (prevState: any, formData: FormData) => {
 export const logout = () => {
     cookieStore.delete('token');
     cookieStore.delete('user');
+    console.log('cookies should be deleted')
+    if(isSignedIn()){
+        console.log('not signed out successfully???');
+    }
 
-    redirect('/login');
+    redirect('/');
 };
 
 export const signup = async (prevState: any, formData: FormData) => {

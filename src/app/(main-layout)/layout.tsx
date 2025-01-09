@@ -9,7 +9,7 @@ import {
     // HeaderNavLogo
  } from "@robperezl/cm-ui";
 import Link from "next/link";
-import LogoutButton from "./logout-button";
+import LogoutButton from "../../components/logout-button";
 import { LayoutProps } from "@/src/global/global.types";
 import { useAuth } from "@/src/helpers/auth";
 import Image from "next/image";

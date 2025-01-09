@@ -23,9 +23,18 @@ export const useAuth = () => {
         return redirect('/login');
     }
     
-
-
     const user = JSON.parse(userCookie);
     console.log(user)
     return [user, token]
 };
+
+export const isSignedIn = () => {
+    const cookieStore = cookies();
+    const token = cookieStore.get('token')?.value;
+
+    if(!token){
+        return false
+    } else {
+        return true
+    }
+}
