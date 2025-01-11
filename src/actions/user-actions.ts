@@ -53,11 +53,10 @@ export const login = async (prevState: any, formData: FormData) => {
         };
     }
 
-    const thirdyDays = 24 * 60 * 60 * 14;
-    const expirationTimestamp = Date.now() + thirdyDays
+    const maxAge = 24 * 60 * 60 * 14;
     
-    cookieStore.set('token', response.token, { maxAge: expirationTimestamp, domain: domainAddress, secure:true });
-    cookieStore.set('user', JSON.stringify(response.user), { maxAge: expirationTimestamp, domain: domainAddress, secure: true });
+    cookieStore.set('token', response.token, { maxAge: maxAge, domain: domainAddress, secure:true });
+    cookieStore.set('user', JSON.stringify(response.user), { maxAge: maxAge, domain: domainAddress, secure: true });
 
     // console.log('COOKIES SHOULD BE SAVED');
     await delay(200);
