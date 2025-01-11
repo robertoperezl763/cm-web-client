@@ -57,19 +57,19 @@ const ItemsDialog = (props: ItemsDialogProps) => {
                 <form ref={formRef} method="dialog" onSubmit={handleFormSubmit} id='my-form'>
                     <MultiRow>
                         <div className="flex flex-col gap-0 p-0 m-0 w-80">
-                            <DialogInput type="Text" required={true} placeholder="Enter Item Name"
+                            <DialogInput maxLength={32} type="Text" required={true} placeholder="Enter Item Name"
                             name="item-name" id="item-name" />
                             <input type="hidden" name="collectionID" id="collectionID" value={props.collectionId ? props.collectionId: ''} />
                             {props.collectionHasAuthor ? 
-                            <DialogInput className="mt-10" type="text" required placeholder="Enter Author"
+                            <DialogInput maxLength={32} className="mt-10" type="text" required placeholder="Enter Author"
                             name="item-author" id="item-author" />
                             : null}
                             {props.collectionHasSeries ? 
-                            <DialogInput type="text" required placeholder="Enter Series"
+                            <DialogInput maxLength={32} type="text" required placeholder="Enter Series"
                             name="item-series" id="item-series" />
                             : null}
                             <div className="mt-3">    
-                                <DialogTextArea extraClassName='' placeholder='Enter Item Description' 
+                                <DialogTextArea maxLength={128} extraClassName='' placeholder='Enter Item Description' 
                                 name="item-description" id="item-description"/>
                             </div>
                         </div>

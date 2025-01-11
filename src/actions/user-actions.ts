@@ -1,6 +1,6 @@
 'use server';
 
-import { serviceUrl } from "../config";
+import { domainAddress, serviceUrl } from "../config";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { isSignedIn, useAuth } from "../helpers/auth";

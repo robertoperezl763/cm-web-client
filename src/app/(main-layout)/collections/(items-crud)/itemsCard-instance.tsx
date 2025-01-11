@@ -17,15 +17,23 @@ type ItemsProps = {
 
 const ItemCardInstance = (props: ItemsProps) => {
     let itemBody = {
-        author: (props.hasAuthor) ? <p className='flex-nowrap'>
-                                        <strong>Author: </strong> 
-                                        {props.author}
-                                    </p> :
+        author: (props.hasAuthor) ? <div className="flex flex-wrap min-w-0">
+                                        <p className='font-bold'>
+                                            Author:
+                                        </p>
+                                        <p>
+                                            {props.author}
+                                        </p>
+                                    </div>:
                                         <></>,
-        series: (props.hasSeries) ? <p className='flex-nowrap'>
-                                        <strong>Series: </strong> 
-                                        {props.series}
-                                    </p> : 
+        series: (props.hasSeries) ? <div className="flex flex-wrap min-w-0">
+                                        <p className='font-bold'>
+                                            Series:
+                                        </p>
+                                        <p>
+                                            {props.series}
+                                        </p>
+                                    </div> : 
                                     <></>,
     }
     return(
