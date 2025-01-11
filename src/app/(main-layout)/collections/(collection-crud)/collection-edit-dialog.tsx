@@ -84,7 +84,8 @@ const CollectionEditDialog = (props: CollectionEditDialogProps) => {
                 <MultiRow>
 
                     <div className="flex flex-col justify-end gap-4 w-80">
-                        <DialogInput 
+                        <DialogInput
+                        maxLength={32} 
                         required={true} 
                         type='text' 
                         placeholder='Enter Collection Name' 
@@ -95,6 +96,7 @@ const CollectionEditDialog = (props: CollectionEditDialogProps) => {
 
                         />
                         <DialogTextArea 
+                        maxLength={128}
                         placeholder='Enter Collection Description' 
                         name="collectionDescription" 
                         id="collectionDescription"
@@ -111,7 +113,7 @@ const CollectionEditDialog = (props: CollectionEditDialogProps) => {
                 </MultiRow>
                 <div className="flex flex-row gap-3 justify-between mt-2" >
                 <Label htmlFor="collectionHasAuthor">
-                    <Input 
+                    <Input
                     type='checkbox' 
                     id="collectionHasAuthor" 
                     name="collectionHasAuthor" 
