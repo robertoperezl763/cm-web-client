@@ -14,7 +14,7 @@ const FooterComponent = () => {
     return(
         <footer className="flex flex-row items-center justify-center py-8 px-0 bottom-0 left-0 w-full bg-grey3 gap-14 clear-both relative">
             <div className="">
-                <p className="font-bold self-center">Created by:</p>
+                <p className="font-bold self-center">Created by</p>
                 <p>Roberto Perez Lopez</p>
             </div>
 
