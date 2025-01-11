@@ -9,11 +9,24 @@ import { isSignedIn, useAuth } from "../helpers/auth";
 // import { arrayBuffer } from "stream/consumers";
 // import { toBool } from "../helpers/helperFunctions";
 
-const cookieStore = cookies();
+
 
 export async function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms) );
-}
+};
+
+export async function setCookies(name:string, sentObject: any, timeSet?: number){
+    const cookieStore = cookies();
+
+    const maxAge = timeSet ? timeSet : 24 * 60 * 60 * 14;
+    //domainAddress
+    cookieStore.set(name, sentObject, { maxAge: maxAge, domain: 'localhost', secure:true, sameSite:'none' });    
+}; 
+
+export async function deleteCookies(name:string){
+    const cookieStore = cookies();
+    cookieStore.delete(name);
+};
 
 export const login = async (prevState: any, formData: FormData) => {
     const reqOptions = {
@@ -53,20 +66,25 @@ export const login = async (prevState: any, formData: FormData) => {
         };
     }
 
-    const thirdyDays = 24 * 60 * 60 * 1000 * 30;
-    const expirationTimestamp = Date.now() + thirdyDays
 
-    cookieStore.set('token', response.token, { expires: expirationTimestamp });
-    cookieStore.set('user', JSON.stringify(response.user), { expires: expirationTimestamp });
+    await setCookies('token', response.token);
+    await setCookies('user', JSON.stringify(response.user));
+
+    // const cookieStore = cookies();
+
+    // const maxAge = 24 * 60 * 60 * 14;
+    // //domainAddress
+    // cookieStore.set('token', response.token, { maxAge: maxAge, domain: domainAddress, secure:true, sameSite:'none' });
+    // cookieStore.set('user', JSON.stringify(response.user), { maxAge: maxAge, domain: domainAddress , secure: true, sameSite:'none' });
 
     // console.log('COOKIES SHOULD BE SAVED');
-    await delay(200);
+    
 
-    if(isSignedIn()){
-        // console.log('I AM LOGGED IN');
-    } else {
-        // console.log('COOKIES ERROR????')
-    }
+    // if(isSignedIn()){
+    //     // console.log('I AM LOGGED IN');
+    // } else {
+    //     // console.log('COOKIES ERROR????')
+    // }
     // console.log(cookieStore.get('token'))
     // console.log(cookieStore.get('user'))
     
@@ -74,13 +92,18 @@ export const login = async (prevState: any, formData: FormData) => {
 
 };
 
-export const logout = () => {
-    cookieStore.delete('token');
-    cookieStore.delete('user');
+export const logout = async () => {
+    await deleteCookies('token')
+    await deleteCookies('user');
+
+    // const cookieStore = cookies();
+    // cookieStore.delete('token');
+    // cookieStore.delete('user');
     // console.log('cookies should be deleted')
-    if(isSignedIn()){
-        // console.log('not signed out successfully???');
-    }
+
+    // if(isSignedIn()){
+    //     // console.log('not signed out successfully???');
+    // }
 
     redirect('/');
 };

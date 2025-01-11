@@ -31,20 +31,26 @@ const ItemCardInstance = (props: ItemsProps) => {
     return(
         
     <ItemCard key={props.itemID} itemid={props.itemID} className="mx-2">
-        <img src={props.imageURL} />
-        <div className="flex  flex-col">
-            <p className="font-bold text-grey6 m-1 max-h-12 overflow-y-auto">
-                {props.itemName}
-            </p>
-            <p className="font-bold text-grey6 m-1 max-h-12 overflow-y-auto">
-                {props.description}
-            </p>
+        <div className="w-full flex flex-nowrap justify-between max-w-screen-md gap-2">
+            <div className="min-w-20 self-center">
+                <img src={props.imageURL} />
+            </div>
+            <div className="min-w-0 flex flex-nowrap justify-evenly items-center gap-2 flex-grow ">
+                <div className="flex flex-col flex-wrap min-w-0 overflow-auto self-stretch">
+                    <p className="font-bold text-grey6">
+                        {props.itemName}
+                    </p>
+                    <p className="text-grey6 max-h-24">
+                        {props.description}
+                    </p>
+                </div>
+                <div className="flex flex-wrap flex-col items-center min-w-0 overflow-auto">
+                    {itemBody.author}
+                    {itemBody.series}
+                </div>
+            </div>
+            {props.children}
         </div>
-        <div className="">
-            {itemBody.author}
-            {itemBody.series}
-        </div>
-        {props.children}
 
     </ItemCard>
     )

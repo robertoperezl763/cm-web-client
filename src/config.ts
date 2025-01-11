@@ -7,4 +7,5 @@ export const s3_config = {
     accessKey: process.env.AWS_ACCESS_KEY ? process.env.AWS_ACCESS_KEY : '',
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ? process.env.AWS_SECRET_ACCESS_KEY: '',
 }
+export const domainAddress = '.robertoperezl.com'
 
