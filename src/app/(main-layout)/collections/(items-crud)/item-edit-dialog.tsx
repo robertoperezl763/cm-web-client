@@ -92,19 +92,19 @@ const ItemsEditDialog = (props: ItemEditDialogProps) => {
                 <form method="dialog" onSubmit={handleFormSubmit} id={props.id}>
                     <MultiRow>
                         <div className="flex flex-col gap-0 p-0 m-0 w-80">
-                            <DialogInput className="m-0" type="Text" required placeholder="Enter Item Name" value={defaultValues.itemName} onChange={handleChange}
+                            <DialogInput maxLength={32} className="m-0" type="Text" required placeholder="Enter Item Name" value={defaultValues.itemName} onChange={handleChange}
                             name="itemName" id="itemName" />
                             <input type="hidden" name="collectionID" id="collectionID" value={props.collectionId ? props.collectionId: ''} />
                             {props.collectionHasAuthor ? 
-                            <DialogInput className="mt-10" type="text" required placeholder="Enter Author"
+                            <DialogInput maxLength={32} className="mt-10" type="text" required placeholder="Enter Author"
                             name="itemAuthor" id="itemAuthor" value={defaultValues.itemAuthor} onChange={handleChange} />
                             : null}
                             {props.collectionHasSeries ? 
-                            <DialogInput type="text" required placeholder="Enter Series"
+                            <DialogInput maxLength={32} type="text" required placeholder="Enter Series"
                             name="itemSeries" id="itemSeries" value={defaultValues.itemSeries} onChange={handleChange}/>
                             : null}
                             <div className="mt-3">    
-                                <DialogTextArea placeholder='Enter Item Description' 
+                                <DialogTextArea maxLength={128} placeholder='Enter Item Description' 
                                 name="itemDescription" id="itemDescription" value={defaultValues.itemDescription} onChange={handleChange}/>
                             </div>
                         </div>

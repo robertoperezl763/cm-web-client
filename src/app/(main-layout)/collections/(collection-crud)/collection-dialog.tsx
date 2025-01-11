@@ -56,9 +56,9 @@ const CollectionDialog = (props: CollectionsDialogProps) => {
             <form ref={formRef} method="dialog" onSubmit={handleFormSubmit} id={props.id}>
                 <MultiRow>
                     <div className="flex flex-col justify-end gap-4 w-80">
-                        <DialogInput required={true} type='text' placeholder='Enter Collection Name' 
+                        <DialogInput maxLength={32} required={true} type='text' placeholder='Enter Collection Name' 
                             name="collection-name" id="collection-name"/>
-                        <DialogTextArea placeholder='Enter Collection Description' 
+                        <DialogTextArea maxLength={128} placeholder='Enter Collection Description' 
                             name="collection-description" id="collection-description"/>
                     </div>
 

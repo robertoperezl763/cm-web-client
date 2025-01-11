@@ -1,6 +1,6 @@
 'use server';
 
-import { serviceUrl } from "../config";
+import { domainAddress, serviceUrl } from "../config";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { isSignedIn, useAuth } from "../helpers/auth";
@@ -53,11 +53,11 @@ export const login = async (prevState: any, formData: FormData) => {
         };
     }
 
-    const thirdyDays = 24 * 60 * 60 * 1000 * 30;
+    const thirdyDays = 24 * 60 * 60 * 14;
     const expirationTimestamp = Date.now() + thirdyDays
-
-    cookieStore.set('token', response.token, { expires: expirationTimestamp });
-    cookieStore.set('user', JSON.stringify(response.user), { expires: expirationTimestamp });
+    
+    cookieStore.set('token', response.token, { maxAge: expirationTimestamp, domain: domainAddress, secure:true });
+    cookieStore.set('user', JSON.stringify(response.user), { maxAge: expirationTimestamp, domain: domainAddress, secure: true });
 
     // console.log('COOKIES SHOULD BE SAVED');
     await delay(200);
