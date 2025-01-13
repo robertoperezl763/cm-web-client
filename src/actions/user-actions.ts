@@ -20,7 +20,7 @@ export async function setCookies(name:string, sentObject: any, timeSet?: number)
 
     const maxAge = timeSet ? timeSet : 24 * 60 * 60 * 14;
     //domainAddress
-    cookieStore.set(name, sentObject, { maxAge: maxAge, domain: 'localhost', secure:true, sameSite:'none' });    
+    cookieStore.set(name, sentObject, { maxAge: maxAge, domain: domainAddress, secure:true, sameSite:'none', httpOnly:true });    
 }; 
 
 export async function deleteCookies(name:string){
