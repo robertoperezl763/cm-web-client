@@ -24,8 +24,9 @@ export async function setCookies(name:string, sentObject: any, timeSet?: number)
 }; 
 
 export async function deleteCookies(name:string){
-    const cookieStore = cookies();
-    cookieStore.delete(name);
+    // const cookieStore = cookies();
+    cookies().set(name, '', {maxAge: 0, domain: domainAddress, secure: true, sameSite:'none', httpOnly: true});
+    // cookieStore.delete(name);
 };
 
 export const login = async (prevState: any, formData: FormData) => {
