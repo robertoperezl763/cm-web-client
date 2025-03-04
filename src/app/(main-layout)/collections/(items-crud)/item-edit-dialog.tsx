@@ -1,6 +1,6 @@
 'use client';
 import {useDialog, Button, DialogFooter, Input, MultiRow, TextArea, Dialog,  } from "@robperezl/cm-ui";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import ImageUpload from "@/src/components/imageUpload";
 import { editItems } from "@/src/actions/item-action";
 import DialogInput from "@/src/components/dialogInput";
@@ -33,6 +33,11 @@ const initialState = {
 const ItemsEditDialog = (props: ItemEditDialogProps) => {
     // const [user, token] = useAuth();
     const [isOpen, setIsOpen, onKeyDown] = useDialog(false);
+    const [refreshImage, setRefreshImage] = useState(0);
+
+    useEffect(() => {
+            setRefreshImage(refreshImage+1)
+        }, [isOpen])
 
     const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -109,17 +114,8 @@ const ItemsEditDialog = (props: ItemEditDialogProps) => {
                             </div>
                         </div>
                         <div className="flex items-center"> 
-                            <ImageUpload name="itemImage" isRequired={false} baseImageURL={props.item.imageURL}/>
-                            {/* <input type="file" name="item-image" width='10px' 
-                            onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                setSelectedImage(
-                                    file ? URL.createObjectURL(file) :
-                                    undefined
-                                )}}/> */}
-                            
+                            <ImageUpload name="itemImage" isRequired={false} baseImageURL={props.item.imageURL} refresh={refreshImage}/>
 
-                            {/* <UploadImage id="itemImage" isReq={true} formId={props.id}/> */}
                         </div>
                     </MultiRow>
                     <DialogFooter classname="justify-between">

@@ -1,6 +1,6 @@
 'use client';
 import {useDialog, Button, DialogFooter, Input, MultiRow, TextArea, UploadImage, IconTypes, Dialog,  } from "@robperezl/cm-ui";
-import { FormEvent, useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import ImageUpload from "@/src/components/imageUpload";
 import { createNewItems } from "@/src/actions/item-action";
 import DialogInput from "@/src/components/dialogInput";
@@ -24,6 +24,7 @@ const initialState = {
 
 const ItemsDialog = (props: ItemsDialogProps) => {
     const [isOpen, setIsOpen, onKeyDown] = useDialog(false);
+    const [refreshImage, setRefreshImage] = useState(0);
 
     const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -38,8 +39,11 @@ const ItemsDialog = (props: ItemsDialogProps) => {
     }
     const formRef: React.MutableRefObject<HTMLFormElement | null> = useRef(null)
 
+
     useEffect(() => {
         formRef.current?.reset();
+        setRefreshImage(refreshImage+1)
+
     }, [isOpen])
 
 
@@ -74,7 +78,7 @@ const ItemsDialog = (props: ItemsDialogProps) => {
                             </div>
                         </div>
                         <div className="flex items-center">
-                            <ImageUpload name="itemImage" isRequired={false} />
+                            <ImageUpload name="itemImage" isRequired={false} refresh={refreshImage} />
                         </div>
                     </MultiRow>
                     <DialogFooter classname="justify-between">

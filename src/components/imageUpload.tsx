@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Icon, IconTypes, Label } from "@robperezl/cm-ui";
 
 type ImageUploadProps = {
@@ -7,12 +7,19 @@ type ImageUploadProps = {
     isRequired: boolean,
     formName?: string,
     baseImageURL?: string,
+    refresh?: number,
 }
 const ImageUpload = (props: ImageUploadProps) => {
     const [selectedImage, setSelectedImage] = useState<string>(props.baseImageURL ? props.baseImageURL : '');
     // const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [isChanged, setIsChanged] = useState('false');
-    
+
+
+    useEffect(() => {
+        console.log('i think child refresh');
+        setSelectedImage(props.baseImageURL ? props.baseImageURL : '');
+        setIsChanged('false');
+    }, [props.refresh])
 
     const imageInput: React.MutableRefObject<HTMLInputElement | null> = useRef(null);
 

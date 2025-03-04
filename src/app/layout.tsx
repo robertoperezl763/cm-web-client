@@ -4,6 +4,7 @@ import "./globals.sass";
 import ToastProvider from "../components/toastProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import {clsx} from "clsx";
+
 const lato = Lato({ 
   weight: ["400"],
   subsets: ["latin"]
