@@ -16,7 +16,6 @@ const ImageUpload = (props: ImageUploadProps) => {
 
 
     useEffect(() => {
-        console.log('i think child refresh');
         setSelectedImage(props.baseImageURL ? props.baseImageURL : '');
         setIsChanged('false');
     }, [props.refresh])

@@ -18,21 +18,21 @@ type ItemsProps = {
 const ItemCardInstance = (props: ItemsProps) => {
     let itemBody = {
         author: (props.hasAuthor) ? <div className="flex flex-wrap min-w-0">
-                                        <p className='font-bold'>
-                                            Author:
-                                        </p>
-                                        <p>
+                                        <span>
+                                            <strong className="mr-1">
+                                                Author:  
+                                            </strong>
                                             {props.author}
-                                        </p>
+                                        </span>
                                     </div>:
                                         <></>,
         series: (props.hasSeries) ? <div className="flex flex-wrap min-w-0">
-                                        <p className='font-bold'>
-                                            Series:
-                                        </p>
-                                        <p>
+                                        <span>
+                                            <strong className="mr-1">
+                                                Series: 
+                                            </strong>
                                             {props.series}
-                                        </p>
+                                        </span>
                                     </div> : 
                                     <></>,
     }
@@ -44,8 +44,8 @@ const ItemCardInstance = (props: ItemsProps) => {
                 <img src={props.imageURL} />
             </div>
             <div className="min-w-0 flex flex-nowrap justify-evenly items-center gap-2 flex-grow ">
-                <div className="flex flex-col flex-wrap min-w-0 overflow-auto self-stretch">
-                    <p className="font-bold text-grey6">
+                <div className="flex flex-col flex-wrap min-w-0 overflow-auto self-stretch justify-center">
+                    <p className="font-bold text-pink5">
                         {props.itemName}
                     </p>
                     <p className="text-grey6 max-h-24">
